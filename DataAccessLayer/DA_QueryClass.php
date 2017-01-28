@@ -176,11 +176,6 @@ class QueryClass {
     }
 
 
-    public function selectQuery($sql) {
-        $res = $this->connection->query($sql);
-        return json_encode($res->fetchAll(PDO::FETCH_ASSOC));
-    }
-
     /*public function prepareQuery($sql) {
         $res = $this->connection->prepare($sql);
         foreach ($this->bindValues as $Key => $value) {
