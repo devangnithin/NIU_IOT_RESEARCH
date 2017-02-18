@@ -1,62 +1,74 @@
 <?php
-require_once(dirname(__FILE__) . "/BusinessLogicLayer/tempHumClass.php");
-
-$tempHum = new tempHumClass();
-$tempHumResult = $tempHum->getAllTempData();
-$currentT = $tempHumResult[0]->temp;
-$currentH = $tempHumResult[0]->hum;
-$tempHumResult = array_reverse($tempHumResult);
-
-
+require_once(dirname(__FILE__) . "/BusinessLogicLayer/accelClass.php");
+$acc = new accelClass();
+$accResult = $acc->getAllAccelData();
+//var_dump($accResult);
+$max = $accResult[0]->id;
 ?>
 <html>
-  <head>
-      <meta http-equiv="refresh" content="5" >
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+    <head>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"  crossorigin="anonymous"></script>
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['ID', 'Temperature', 'Humidity'],
-          <?php
-          foreach ($tempHumResult as $tempHumI) {
-              echo '[\''.$tempHumI->id.'\',  '.$tempHumI->temp.','.$tempHumI->hum.'],';
-              
-          }
-          ?>
-        ]);
+        <script type="text/javascript">
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            var data;
+            var chart;
+            var options = {
+                title: 'Accelerometer Data',
+                curveType: 'function',
+                legend: {position: 'bottom'}
+            };
+            
+            var max = <?php echo $max; ?>;
+            function reload() {
+                $.getJSON("fetchNewData.php?id="+max, function (datah) {
+                    var items = [];
+                    $.each(datah, function (key, val) {
+                        var items2 = []
+                        $.each(val, function (key, val2) {
+                            if (key == "id") {
+                                if (parseInt(val2) > max) {
+                                    max = parseInt(val2);
+                                }
+                                items2.push(val2);
+                            } else {
+                                items2.push(parseInt(val2));
+                            }
+                        });
+                        items.push(items2);
+                    });
 
-        var options = {
-          title: 'Current Room Temp',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
+                    data.addRows(items);
+                    chart.draw(data);
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                });
+            }
+            function drawChart() {
+                data = google.visualization.arrayToDataTable([
+                    ['ID', 'x-axis', 'y-axis', 'z-axis'],
+<?php
+foreach ($accResult as $accI) {
+    echo '[\'' . $accI->id . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
+    if ($accI->id > $max) {
+        $max = $accI->id;
+    }
+}
+?>
+                ]);
+                chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                chart.draw(data, options);
+            }
 
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="curve_chart" style="width: 900px; height: 500px"></div>
-    <div style="float: left; border-right: black; border-right-style: double">
-        <div>
-            <h3 style="color: green">Last Read Room Temperature:</h3>
-        </div>
-        <div>
-            <h1 style="color: green">" <?php echo $currentT; ?> &#8451; "</h1>
-        </div>
-    </div>
-    <div style="float: left">
-        <div>
-            <h3 style="color: green">Last Read Room Humidity:</h3>
-        </div>
-        <div>
-            <h1 style="color: green">" <?php echo $currentH; ?> "</h1>
-        </div>
-    </div>
-  </body>
+            setInterval(function () {
+               reload();
+            }, 5000);
+            
+            max = <?php echo $max; ?>
+        </script>
+    </head>
+    <body>
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    </body>
 </html>
