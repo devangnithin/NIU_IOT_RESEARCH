@@ -1,28 +1,28 @@
 <?php
-$accResult2 = $acc->getAllAccelData(2);
-$max2 = $accResult2[0]->id;
+$accResult3 = $acc->getAllAccelData(3);
+$max3 = $accResult3[0]->id;
 ?>
 <script type="text/javascript">
             google.charts.load('current', {'packages': ['corechart']});
-            google.charts.setOnLoadCallback(drawChart2);
-            var data2;
-            var chart2;
-            var options2 = {
-                title: '2nd Accelerometer Data',
+            google.charts.setOnLoadCallback(drawChart3);
+            var data3;
+            var chart3;
+            var options3 = {
+                title: '3rd Accelerometer Data',
                 curveType: 'function',
                 legend: {position: 'bottom'}
             };
             
-            var max2 = <?php echo $max2; ?>;
-            function reload2() {
-                $.getJSON("fetchNewData.php?accel=2&id=" + max2, function (datah) {
+            var max3 = <?php echo $max3; ?>;
+            function reload3() {
+                $.getJSON("fetchNewData.php?accel=3&id=" + max3, function (datah) {
                     var items = [];
                     $.each(datah, function (key, val) {
                         var items2 = []
                         $.each(val, function (key, val2) {
                             if (key == "id") {
                                 if (parseInt(val2) > max2) {
-                                    max2 = parseInt(val2);
+                                    max3 = parseInt(val2);
                                 }
                                 items2.push(val2);
                             } else {
@@ -32,30 +32,30 @@ $max2 = $accResult2[0]->id;
                         items.push(items2);
                     });
 
-                    data2.addRows(items);
-                    chart2.draw(data2);
+                    data3.addRows(items);
+                    chart3.draw(data3);
 
                 });
             }
-            function drawChart2() {
-                data2 = google.visualization.arrayToDataTable([
+            function drawChart3() {
+                data3 = google.visualization.arrayToDataTable([
                     ['ID', 'x-axis', 'y-axis', 'z-axis'],
 <?php
-foreach ($accResult2 as $accI) {
+foreach ($accResult3 as $accI) {
     echo '[\'' . $accI->id . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
-    if ($accI->id > $max2) {
-        $max2 = $accI->id;
+    if ($accI->id > $max3) {
+        $max3 = $accI->id;
     }
 }
 ?>
                 ]);
-                chart2 = new google.visualization.LineChart(document.getElementById('accel_chart2'));
-                chart2.draw(data2, options2);
+                chart3 = new google.visualization.LineChart(document.getElementById('accel_chart3'));
+                chart3.draw(data3, options3);
             }
 
             setInterval(function () {
-               //reload2();
+               //reload3();
             }, 5000);
             
-            max2 = <?php echo $max2; ?>
+            max3 = <?php echo $max3; ?>
         </script>
