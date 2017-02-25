@@ -54,7 +54,7 @@ foreach ($accResult1 as $accI) {
     }
 
     setInterval(function () {
-        //reload1();
+        reload1();
     }, 5000);
 
     max1 = <?php echo $max1; ?>

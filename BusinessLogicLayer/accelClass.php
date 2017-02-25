@@ -9,9 +9,9 @@ class accelClass {
         return json_decode($qc->selectQueryRun('SELECT * FROM `'.$this->getAcceltable($accelId).'` LIMIT 5000'));
     }
     
-    public function getAccelDataStartFrom($id) {
+    public function getAccelDataStartFrom($id, $accelId) {
         $qc = new QueryClass();
-        return json_decode($qc->selectQueryRun('SELECT id, x_val, y_val, z_val FROM `accel_data` WHERE id>'.$id));
+        return json_decode($qc->selectQueryRun('SELECT id, x_val, y_val, z_val FROM `'.$this->getAcceltable($accelId).'` WHERE id>'.$id));
     }
     
     private function getAcceltable($accelId) {
