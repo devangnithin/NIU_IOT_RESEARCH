@@ -15,14 +15,14 @@ $max1 = $accResult1[0]->id;
 
     var max1 = <?php echo $max1; ?>;
     function reload1() {
-        $.getJSON("fetchNewData.php?accel=1&id=" + max, function (datah) {
+        $.getJSON("fetchNewData.php?accel=1&id=" + max1, function (datah) {
             var items = [];
             $.each(datah, function (key, val) {
                 var items2 = []
                 $.each(val, function (key, val2) {
                     if (key == "id") {
-                        if (parseInt(val2) > max) {
-                            max = parseInt(val2);
+                        if (parseInt(val2) > max1) {
+                            max1 = parseInt(val2);
                         }
                         items2.push(val2);
                     } else {
