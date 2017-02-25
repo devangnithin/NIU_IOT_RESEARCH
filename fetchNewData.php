@@ -1,6 +1,4 @@
 <?php
-$acc = new accelClass();
-
 header('Content-type: application/json');
 if (isset($_GET['id'])) {
     $accelId = 1;
@@ -8,6 +6,7 @@ if (isset($_GET['id'])) {
         $accelId = $_GET['accel'];
     }
     require_once(dirname(__FILE__) . "/BusinessLogicLayer/accelClass.php");
+    $acc = new accelClass();
     $accResult = $acc->getAccelDataStartFrom($_GET['id'], $accelId);
     /*$result = "[";
     foreach ($accResult as $accI) {
