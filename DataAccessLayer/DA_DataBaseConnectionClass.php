@@ -1,7 +1,7 @@
 <?php
 class DA_DataBaseConnectionClass {
     private static $UserName = "root";
-    private static $Password = "";
+    private static $Password = "passw0rd"; //Change to actual password
     private static $DataBase = "niu_res";
     private static $Server = "localhost";
     private static $connection;
