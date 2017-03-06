@@ -43,7 +43,7 @@ if (count($accResult3) > 0) {
                 ['ID', 'x-axis', 'y-axis', 'z-axis'],
     <?php
     foreach ($accResult3 as $accI) {
-        echo '[\'' . $accI->id . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
+        echo '[\'' . $accI->post_time . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
         if ($accI->id > $max3) {
             $max3 = $accI->id;
         }
