@@ -18,7 +18,7 @@ class accelClass {
     
     public function getAccelDataStartFrom($id, $accelId) {
         $qc = new QueryClass();
-        return json_decode($qc->selectQueryRun('SELECT id, x_val, y_val, z_val, DATE_FORMAT(post_date,\'%H:%i:%s\') as post_time  FROM `'.$this->getAcceltable($accelId).'` WHERE id>'.$id));
+        return json_decode($qc->selectQueryRun('SELECT id, DATE_FORMAT(post_date,\'%H:%i:%s\') as post_time, x_val, y_val, z_val, FROM `'.$this->getAcceltable($accelId).'` WHERE id>'.$id));
     }
     
     private function getLimiter() {
