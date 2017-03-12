@@ -37,7 +37,7 @@ if (count($accResult1) > 0) {
                 });
 
                 data1.addRows(items);
-                chart1.draw(data);
+                chart1.draw(data1);
 
             });
         }
