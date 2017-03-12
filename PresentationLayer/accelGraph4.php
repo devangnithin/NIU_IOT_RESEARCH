@@ -36,6 +36,7 @@ if (count($accResult4) > 0) {
                     items.push(items2);
                 });
 
+                data1.removeRows(0, datah.length);
                 data4.addRows(items);
                 chart4.draw(data4);
 
