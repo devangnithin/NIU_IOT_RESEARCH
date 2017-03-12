@@ -26,7 +26,7 @@ if (count($accResult4) > 0) {
                             if (parseInt(val2) > max2) {
                                 max4 = parseInt(val2);
                             }
-                            items2.push(val2);
+                            //items2.push(val2);
                         } else {
                             items2.push(parseInt(val2));
                         }
