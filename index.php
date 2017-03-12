@@ -45,9 +45,10 @@ $acc = new accelClass($graphLength);
 
 
     <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph1.php"); ?>
-    <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph2.php"); ?>
-    <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph3.php"); ?>
-    <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph4.php"); ?>
+  <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph2.php"); ?>
+  <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph3.php"); ?>
+  <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph4.php"); ?>
+
 </head>
 <body>
     <div style="float: left">

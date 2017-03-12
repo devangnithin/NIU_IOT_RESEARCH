@@ -18,7 +18,7 @@ if (count($accResult2) > 0) {
 
         var max2 = <?php echo $max2; ?>;
         function reload2() {
-            $.getJSON("fetchNewData.php?accel=2&id=" + max2, function (datah) {
+            $.getJSON("fetchNewData.php?accel=2&graph_len_name=<?php echo $graphLength; ?>&id=" + max2, function (datah) {
                 var items = [];
                 $.each(datah, function (key, val) {
                     var items2 = []
@@ -31,13 +31,13 @@ if (count($accResult2) > 0) {
                         } else if (key == "post_time") {
                             items2.push(val2);
                         } else {
-                            items2.push(parseInt(val2));
+                            items2.push(parseFloat(val2));
                         }
                     });
                     items.push(items2);
                 });
 
-                data1.removeRows(0, datah.length);
+                data2.removeRows(0, datah.length);
                 data2.addRows(items);
                 chart2.draw(data2);
 

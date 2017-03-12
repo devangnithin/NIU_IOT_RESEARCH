@@ -5,6 +5,11 @@ if (isset($_GET['id'])) {
     if (isset($_GET['accel'])) {
         $accelId = $_GET['accel'];
     }
+    $graphLength = "50";
+    if(isset($_GET['graph_len_name'])) {
+        $graphLength = $_GET['graph_len_name'];
+    }
+
     require_once(dirname(__FILE__) . "/BusinessLogicLayer/accelClass.php");
     $acc = new accelClass();
     $accResult = $acc->getAccelDataStartFrom($_GET['id'], $accelId);

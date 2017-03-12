@@ -17,7 +17,7 @@ if (count($accResult4) > 0) {
 
         var max4 = <?php echo $max4; ?>;
         function reload4() {
-            $.getJSON("fetchNewData.php?accel=4&id=" + max4, function (datah) {
+            $.getJSON("fetchNewData.php?accel=4&graph_len_name=<?php echo $graphLength;?>&id=" + max4, function (datah) {
                 var items = [];
                 $.each(datah, function (key, val) {
                     var items2 = []
@@ -30,13 +30,13 @@ if (count($accResult4) > 0) {
                         } else if (key == "post_time") {
                             items2.push(val2);
                         }else {
-                            items2.push(parseInt(val2));
+                            items2.push(parseFloat(val2));
                         }
                     });
                     items.push(items2);
                 });
 
-                data1.removeRows(0, datah.length);
+                data4.removeRows(0, datah.length);
                 data4.addRows(items);
                 chart4.draw(data4);
 
