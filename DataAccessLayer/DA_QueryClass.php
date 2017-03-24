@@ -71,6 +71,27 @@ class QueryClass {
         } else
             return false;
     }
+    
+    public function insert2($varray) {
+        $sql = "INSERT INTO " . $this->tableName[0]."(";
+        
+        foreach ($varray as $key_ => $value_) {
+                $sql = $sql . "$key_,";
+        }
+        $sql = substr($sql, 0, strlen($sql) - 1);
+        
+        $sql = $sql . ") VALUES (";
+        foreach ($varray as $key_ => $value_) {
+                $sql = $sql . $value_ . ",";
+        }
+        $sql = substr($sql, 0, strlen($sql) - 1);
+        $sql = $sql . ")";
+        //echo $sql;
+        if ((mysqli_query($this->dataBaseConnect->getConnection(), $sql)) == 1) {
+            return true;
+        } else
+            return false;
+    }
     public function select() {
         $Sql = "SELECT ";
         foreach ($this->fieldListArray as $FieldValueTemp) {
@@ -163,6 +184,13 @@ class QueryClass {
             array_push($Json, $Row);
         }
         return json_encode($Json);
+    }
+    
+    public function deleteQueryRun($Sql_) {
+        $Sql = $Sql_;
+        //echo $Sql;
+        $Table = mysqli_query($this->dataBaseConnect->getConnection(), $Sql);
+        return true;
     }
     public function getConnection() {
         return $this->dataBaseConnect->getConnection();

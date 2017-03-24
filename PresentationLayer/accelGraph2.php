@@ -1,3 +1,5 @@
+<!--<div id="accel_chart2" style="width: 800px; height: 500px; float: left"></div>-->
+<div id="accel_chart2" style="height: 500px;"></div>
 <?php
 $accResult2 = $acc->getAllAccelData(2);
 if (count($accResult2) > 0) {

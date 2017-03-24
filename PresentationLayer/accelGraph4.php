@@ -1,3 +1,4 @@
+<div id="accel_chart4" style="height: 500px;"></div>
 <?php
 $accResult4 = $acc->getAllAccelData(4);
 if (count($accResult4) > 0) {

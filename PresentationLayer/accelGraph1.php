@@ -1,3 +1,4 @@
+<div id="accel_chart1" style="height: 500px;"></div>
 <?php
 $accResult1 = $acc->getAllAccelData(1);
 if (count($accResult1) > 0) {
@@ -12,19 +13,24 @@ if (count($accResult1) > 0) {
         var options1 = {
             title: '1st Accelerometer Data',
             curveType: 'function',
-            legend: {position: 'bottom'}
+            legend: {position: 'bottom'},
+            vAxis: {
+                title: 'Accel Value',
+            },
+            hAxis: {
+                title: 'Time (UTC)',
+            }
         };
 
         var max1 = <?php echo $max1; ?>;
         var isLoading = 0;
         function reload1() {
-            if(isLoading === 0) {
+            if (isLoading === 0) {
                 isLoading = 1;
+            } else {
+                return;
             }
-            else {
-                return ;
-            }
-            $.getJSON("fetchNewData.php?accel=1&graph_len_name=<?php echo $graphLength;  ?>&id=" + max1, function (datah) {
+            $.getJSON("fetchNewData.php?accel=1&graph_len_name=<?php echo $graphLength; ?>&id=" + max1, function (datah) {
                 var items = [];
                 $.each(datah, function (key, val) {
                     var items2 = []
@@ -44,7 +50,7 @@ if (count($accResult1) > 0) {
 
                 data1.removeRows(0, datah.length);
                 data1.addRows(items);
-                chart1.draw(data1);
+                chart1.draw(data1, options1);
                 isLoading = 0;
 
             });
