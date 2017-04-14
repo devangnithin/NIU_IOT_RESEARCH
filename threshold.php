@@ -155,14 +155,14 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
                             </span>
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="alerts.php">
                             <i class="fa fa fa-bar-chart-o"></i>
                             <span class="link-title">
                                 Alerts
                             </span>
                         </a>
-                    </li>
+                    </li>-->
                     <li class="nav-divider"></li>
 
 

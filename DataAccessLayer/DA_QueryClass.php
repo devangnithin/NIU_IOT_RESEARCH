@@ -1,4 +1,5 @@
 <?php
+
 require_once 'DA_DataBaseConnectionClass.php';
 
 class QueryClass {
@@ -11,15 +12,17 @@ class QueryClass {
     private $stringCondition = array();
     private $sql = "";
     private $dataBaseConnect;
-    
+
     public function QueryClass() { //Constructor
         $db = new DA_DataBaseConnectionClass();
         $this->dataBaseConnect = $db;
         $this->connection = $db->getConnection();
     }
+
     public function setTable($TableName_) {
         array_push($this->tableName, $TableName_);
     }
+
     public function addField($FieldValue_, $ColumnName_ = "0") {
         trigger_error("AddField function is depricated. Use setField(columnName, fieldValue) or setField(fieldValue) instead");
         if ($ColumnName_ == "0") {
@@ -28,6 +31,7 @@ class QueryClass {
             $this->fieldListArray[$ColumnName_] = $FieldValue_;
         }
     }
+
     public function setField() {
         if (func_num_args() > 2) {
             trigger_error('Expecting two arguments', E_USER_ERROR);
@@ -43,17 +47,21 @@ class QueryClass {
             $this->fieldListArray[$columnName] = $filedValue;
         }
     }
+
     public function addCondition($Key_, $Value_) {
         $this->conditionArray[$Key_] = $Value_;
     }
+
     public function addStringCondition($Condition) {
         if (null == $Condition)
             return;
         array_push($this->stringCondition, $Condition);
     }
+
     public function addMoreThanCondition($Key_, $Value_) {
         $this->MoreThanConditionArray[$Key_] = $Value_;
     }
+
     public function insert() {
         $Sql = "INSERT INTO " . $this->tableName[0] . " VALUES (";
         foreach ($this->fieldListArray as $FieldValueTemp) {
@@ -71,18 +79,18 @@ class QueryClass {
         } else
             return false;
     }
-    
+
     public function insert2($varray) {
-        $sql = "INSERT INTO " . $this->tableName[0]."(";
-        
+        $sql = "INSERT INTO " . $this->tableName[0] . "(";
+
         foreach ($varray as $key_ => $value_) {
-                $sql = $sql . "$key_,";
+            $sql = $sql . "$key_,";
         }
         $sql = substr($sql, 0, strlen($sql) - 1);
-        
+
         $sql = $sql . ") VALUES (";
         foreach ($varray as $key_ => $value_) {
-                $sql = $sql . $value_ . ",";
+            $sql = $sql . $value_ . ",";
         }
         $sql = substr($sql, 0, strlen($sql) - 1);
         $sql = $sql . ")";
@@ -92,6 +100,7 @@ class QueryClass {
         } else
             return false;
     }
+
     public function select() {
         $Sql = "SELECT ";
         foreach ($this->fieldListArray as $FieldValueTemp) {
@@ -121,6 +130,7 @@ class QueryClass {
         }
         return json_encode($Json);
     }
+
     public function update() {
         //UPDATE table_name SET column1=value, column2=value2 WHERE some_column=some_value
         $Sql = "UPDATE " . $this->tableName[0] . " SET ";
@@ -136,12 +146,15 @@ class QueryClass {
         //echo $Sql;
         return mysqli_query($this->dataBaseConnect->getConnection(), $Sql);
     }
+
     public function delete($TableName_, $FieldArray_, $ConditionArray_) {
         
     }
+
     public function count() {
         
     }
+
     public function descrite($Field_) {
         $Sql = "SELECT DISTINCT($Field_)";
         $Sql = $Sql . " FROM ";
@@ -164,17 +177,21 @@ class QueryClass {
         }
         return json_encode($Json);
     }
+
     public function startTransaction($TransactionName_) {
         return mysqli_autocommit($this->dataBaseConnect->getConnection(), FALSE);
     }
+
     public function endTransaction($TransactionName_) {
         mysqli_autocommit($this->dataBaseConnect->getConnection(), TRUE);
         mysqli_close($this->dataBaseConnect->getConnection());
     }
+
     public function rollbackTransaction($TransactionName_) {
         mysqli_rollback($this->dataBaseConnect->getConnection());
         mysqli_close($this->dataBaseConnect->getConnection());
     }
+
     public function selectQueryRun($Sql_) {
         $Sql = $Sql_;
         //echo $Sql;
@@ -185,16 +202,26 @@ class QueryClass {
         }
         return json_encode($Json);
     }
-    
+
+    public function insertQueryRun($Sql) {
+
+        if ((mysqli_query($this->dataBaseConnect->getConnection(), $Sql)) == 1) {
+            return true;
+        } else
+            return false;
+    }
+
     public function deleteQueryRun($Sql_) {
         $Sql = $Sql_;
         //echo $Sql;
         $Table = mysqli_query($this->dataBaseConnect->getConnection(), $Sql);
         return true;
     }
+
     public function getConnection() {
         return $this->dataBaseConnect->getConnection();
     }
+
     public function reset() {
         $this->tableName = array();
         $this->fieldListArray = array();
@@ -203,59 +230,57 @@ class QueryClass {
         $this->sql = "";
     }
 
+    /* public function prepareQuery($sql) {
+      $res = $this->connection->prepare($sql);
+      foreach ($this->bindValues as $Key => $value) {
+      $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
+      }
+      $res->execute();
+      return json_encode($res->fetchAll(PDO::FETCH_ASSOC));
+      }
 
-    /*public function prepareQuery($sql) {
-        $res = $this->connection->prepare($sql);
-        foreach ($this->bindValues as $Key => $value) {
-            $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
-        }
-        $res->execute();
-        return json_encode($res->fetchAll(PDO::FETCH_ASSOC));
-    }
+      public function prepareUpdate($sql) {
+      $res = $this->connection->prepare($sql);
+      foreach ($this->bindValues as $Key => $value) {
+      $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
+      }
+      return $res->execute();
+      }
 
-    public function prepareUpdate($sql) {
-        $res = $this->connection->prepare($sql);
-        foreach ($this->bindValues as $Key => $value) {
-            $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
-        }
-        return $res->execute();
-    }
+      public function prepareInsert($sql) {
+      $res = $this->connection->prepare($sql);
+      foreach ($this->bindValues as $Key => $value) {
+      $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
+      }
+      return $res->execute();
+      }
 
-    public function prepareInsert($sql) {
-        $res = $this->connection->prepare($sql);
-        foreach ($this->bindValues as $Key => $value) {
-            $res->bindValue(':' . $Key, $value, $this->getPDOType($value));
-        }
-        return $res->execute();
-    }
+      public function bindValue($ColumnName, $FieldValue) {
+      $this->bindValues[$ColumnName] = $FieldValue;
+      }
 
-    public function bindValue($ColumnName, $FieldValue) {
-        $this->bindValues[$ColumnName] = $FieldValue;
-    }
+      public function reset() {
+      $this->bindValues = array();
+      }
 
-    public function reset() {
-        $this->bindValues = array();
-    }
+      public function beginTransaction() {
+      $this->connection->beginTransaction();
+      }
 
-    public function beginTransaction() {
-        $this->connection->beginTransaction();
-    }
+      public function rollBack() {
+      $this->connection->rollBack();
+      }
 
-    public function rollBack() {
-        $this->connection->rollBack();
-    }
+      public function commit() {
+      $this->connection->commit();
+      }
 
-    public function commit() {
-        $this->connection->commit();
-    }
-
-    private static function getPDOType($value) {
-        if (is_numeric($value)) {
-            return PDO::PARAM_INT;
-        } else
-            return PDO::PARAM_STR;
-    }*/
-
+      private static function getPDOType($value) {
+      if (is_numeric($value)) {
+      return PDO::PARAM_INT;
+      } else
+      return PDO::PARAM_STR;
+      } */
 }
 
 ?>

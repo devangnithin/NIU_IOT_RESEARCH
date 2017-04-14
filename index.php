@@ -59,7 +59,7 @@ $acc = new accelClass($graphLength);
                 rootpath: "/assets/"
             };
         </script>
-         <style>
+        <style>
             .button {
                 background-color: Red; /* Green */
                 border: none;
@@ -140,6 +140,10 @@ $acc = new accelClass($graphLength);
 
                 <div class="outer">
                     <div class="inner bg-light lter">
+                        <hr/>
+                        <h1 class="display-4" style="text-align:center; color: brown">Northern Illionois University</h1>
+                        <h3 class="display-4" style="text-align:right; color: brown">_Bridge IoT Experiment.</h3>
+                        <hr/>
                         <div class="row">
                             <div class="col-lg-6">
                                 <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph1.php"); ?>
