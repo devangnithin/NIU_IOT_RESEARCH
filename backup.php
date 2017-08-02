@@ -1,6 +1,6 @@
 <?php
 
-require_once(dirname(__FILE__) . "/phpORM/DA_QueryClass.php");
+require_once(dirname(__FILE__) . "/DataAccessLayer/DA_QueryClass.php");
 $postData = $_POST['data'];
 //$postData= file_get_contents("out.txt");
 $data = json_decode($postData, TRUE);

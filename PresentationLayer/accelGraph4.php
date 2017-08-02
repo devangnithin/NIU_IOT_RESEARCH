@@ -1,71 +1,12 @@
-<div id="accel_chart4" style="height: 500px;"></div>
+<!--<div id="accel_chart2" style="width: 800px; height: 500px; float: left"></div>-->
+<div class="row">
+    <div class="col-lg-6">
+        <!--<div id="accel_chart2" style="height: 500px;"></div>-->
+        <iframe src="http://localhost:5601/app/kibana#/visualize/edit/b0a2d1e0-77c6-11e7-885b-f1bb4ab5f061?embed=true&_g=(refreshInterval%3A('%24%24hashKey'%3A'object%3A682'%2Cdisplay%3A'5%20seconds'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))" height="400px" width="100%"></iframe>
+    </div>
+    <div class="col-lg-6">
+        <div id="accel_chart_f4" style="height: 500px;"></div>
+    </div>
+</div>
 <?php
-$accResult4 = $acc->getAllAccelData(4);
-if (count($accResult4) > 0) {
-
-    $max4 = $accResult4[0]->id;
-    ?>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart4);
-        var data4;
-        var chart4;
-        var options4 = {
-            title: '4th Accelerometer Data',
-            curveType: 'function',
-            legend: {position: 'bottom'}
-        };
-
-        var max4 = <?php echo $max4; ?>;
-        function reload4() {
-            $.getJSON("fetchNewData.php?accel=4&graph_len_name=<?php echo $graphLength;?>&id=" + max4, function (datah) {
-                var items = [];
-                $.each(datah, function (key, val) {
-                    var items2 = []
-                    $.each(val, function (key, val2) {
-                        if (key == "id") {
-                            if (parseInt(val2) > max2) {
-                                max4 = parseInt(val2);
-                            }
-                            //items2.push(val2);
-                        } else if (key == "post_time") {
-                            items2.push(val2);
-                        }else {
-                            items2.push(parseFloat(val2));
-                        }
-                    });
-                    items.push(items2);
-                });
-
-                data4.removeRows(0, datah.length);
-                data4.addRows(items);
-                chart4.draw(data4);
-
-            });
-        }
-        function drawChart4() {
-            data4 = google.visualization.arrayToDataTable([
-                ['ID', 'x-axis', 'y-axis', 'z-axis'],
-    <?php
-    foreach ($accResult4 as $accI) {
-        echo '[\'' . $accI->post_time . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
-        if ($accI->id > $max2) {
-            $max4 = $accI->id;
-        }
-    }
-    ?>
-            ]);
-            chart4 = new google.visualization.LineChart(document.getElementById('accel_chart4'));
-            chart4.draw(data4, options4);
-        }
-
-        setInterval(function () {
-            //reload4();
-        }, 5000);
-
-        max4 = <?php echo $max4; ?>
-    </script>
-    <?php
-} else {
-    echo "<h1>No Data</h1>";
-}
+echoFourierUI(4, $acc);

@@ -8,15 +8,15 @@ body.boxed {
   background: url("../img/pattern/arches.png") repeat;
 }
 #top > .navbar {
-  border-top: 3px solid #428bca;
+  border-top: 3px solid #595846;
 }
 #top > .navbar .dropdown-menu > li > a:hover,
 #top > .navbar .dropdown-menu > li > a:focus {
-  background-color: #428bca;
+  background-color: #595846;
   color: #ffffff;
 }
 #menu {
-  background-color: #428bca !important;
+  background-color: #595846 !important;
 }
 #menu > li > a {
   color: #ffffff;

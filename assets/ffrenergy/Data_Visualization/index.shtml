@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<title ></title>
+<div id="google_analytics"><script language="JavaScript" src="/javascripts/trackingscript.js" type="text/javascript" ></script></div>
+<link href="/masterto/includes/widgets/slideshow/css/nivo-slider.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/masterto/themes/cgs/css/fonts/BebasNeue.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="/masterto/includes/widgets/slideshow/themes/default/default.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" ></script>
+<script src="/masterto/includes/widgets/slideshow/jquery.nivo.slider.pack.js" type="text/javascript" ></script>
+<script language="JavaScript" src="/masterto/themes/campusrec/javascripts/tab_panel.js" type="text/javascript" ></script>
+<link href="/masterto/themes/standard_grey/css/master_1.css" media="screen" rel="stylesheet" type="text/css" /><link href="/masterto/themes/standard_grey/css/content_area_1.css" media="screen" rel="stylesheet" type="text/css" /><link href="/masterto/themes/standard_grey/css/print_1.css" media="print" rel="stylesheet" type="text/css" /><contenttext><br />
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div></contenttext> 
+<link href="/masterto/includes/csslibrary/general.css" media="screen" rel="stylesheet" type="text/css" />
+
+
+<script language="JavaScript" src="/masterto/includes/widgets/slideshow/jquery.nivo.slider.js" type="text/javascript" ></script>
+
+<style type="text/css">
+.theme-default .nivo-controlNav {
+    left: 75%;
+    }
+</style>
+</head>
+<body>
+ 
+<div id="wrapper">
+    <div class="Quick_Nav">
+        <a id="top" name="top" ></a> 
+        <h2><a id="Quick_Navigation" name="Quick_Navigation" ></a>Quick Navigation</h2>
+<ul>
+<li><a href="#Page_Content">Primary Page Content</a></li>
+<li><a href="#Topic_Nav">Topic Navigation</a></li>
+<li><a href="#Audience_Nav">Audience Navigation</a></li>
+<li><a href="#NIU_Nav">NIU Global Links</a></li>
+<li><a href="#NIU_Site_Search">NIU Search</a></li>
+<li><a href="#NIU_Footer">Footer Information</a></li>
+<li><a href="#top" id="top">Top of Page</a></li>
+</ul>
+    </div>
+
+    <div id="header"><h1><a href="http://www.niu.edu"><img alt="NIU" border="0" height="120" src="/masterto/themes/standard_grey/images/NIU_logo.gif" width="70" /></a></h1><h2><img alt="Northern Illinois University" border="0" height="71px" src="/shared_content/images/department_headers/FFrenergy.jpg" width="500px" /></h2><div id="globalNav"><a id="NIU_Nav" name="NIU_Nav" ></a><a href="http://www.niu.edu/web.shtml">A-Z </a> | <a href="https://webcourses.niu.edu/webapps/portal/frameset.jsp">Blackboard</a> | <a href="http://www.niu.edu/eas/caldirect.aspx?cal=*&amp;view=week&amp;format=list">Calendar</a> | <a href="https://directory.niu.edu">Directory</a> | <a href="http://myniu.niu.edu/">MyNIU</a> | <a href="http://www.niutoday.info">NIU Today</a> | <a href="http://www.niu.edu">NIU Home</a><br /></div><div id="search"><a id="NIU_Site_Search" name="NIU_Site_Search" ></a><form action="http://www.niu.edu/niusearch.asp" id="NIU_Search" name="SearchForm"><input name="cx" type="hidden" value="015599932022858976637:nq6dbpwtmdi" /><input name="cof" type="hidden" value="FORID:11" /><input accesskey="S" id="SearchNIU" maxlength="255" name="q" onfocus="this.value='';" size="14" title="Search NIU" value="Search NIU" /><input name="go" type="submit" value="GO!" /><br /><a href="http://www.niu.edu/niusearch.asp" title="Advanced Search">Advanced Search</a></form></div></div> 
+    
+     
+    
+    <div id="mainHeading"><h1>Data Visualization and Download</h1></div> 
+    
+     
+
+    <div id="mainContent">
+        <a id="Page_Content" name="Page_Content" ></a> 
+        
+        <div id="leftCol"><div id="leftNav"><ul><li><a href="../index.shtml" target="_parent">Home</a></li><li><a href="../Freedom_Field/index.shtml" target="_parent">Freedom Field</a></li><li><a href="../Facilities/index.shtml" target="_parent">Facilities</a></li><li><a href="index.shtml" target="_parent">Energy Data</a></li><li><a href="../Contact/index.shtml" target="_parent">Contact</a></li></ul></div></div> 
+        
+         
+        
+           
+        
+        <div id="contentwithleftnav"><div><img alt="data" id="headerMainImage" src="../images/data.jpg" /></div><contenttext><h1 style="text-align: justify;"><strong>Data Visualization and Download</strong></h1>
+<p style="text-align: justify;">This page will provide access to historical data that are collected for the Freedom Field system.&#160; Data are primarily collected in a server within the Freedom Field using the hardware and software developed by General Electric (GE).&#160; An arrangement has been made to upload the collected data to a NIU server (located within the Department of Technology).&#160; The data are then converted to an appropriate file format and saved to a secured server.&#160; The whole transfer and conversion process are implemented using an automated system without any human intervention.&#160; A number of Web applications are then developed to visualize the data in graphical form.&#160; A user can choose the duration of displayed data.</p>
+<p style="text-align: justify;">In addition to the graphical visualization a user can download the data to his/her local drive and analyze them as necessary. Access to the data is password protected.&#160; If you like to an access, please contact with Dr. Azad (aazad@niu.edu) for an account.&#160; If you already have an account please click on the button below.</p>
+<p style="text-align: justify;">&#160;</p>
+<p><a href="http://10.158.160.31:88/" target="_blank" title="Data Visualization"><img alt="Click Me" border="0" height="51" src="clickme.png" style="display: block; margin-left: auto; margin-right: auto;" width="264" /></a></p>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div>
+<div activeid="-1" expanded="0" id="divCleekiAttrib" menubottom="0" menuleft="0" menuright="0" menutop="0" style="display: none;" ></div>
+<div id="divCleekiAttrib" style="display: none;" ></div></contenttext></div> 
+        
+        
+    </div>
+    
+    <div id="footer"><a id="NIU_Footer" name="NIU_Footer" ></a> <div id="locations">
+<p align="right">DeKalb, Illinois 60115 | <a href="http://www.niu.edu/regional">Regional Sites</a> | <a href="http://www.niu.edu/contactinfo.shtml">Contact Us</a> <br /> <a href="http://www.niu.edu/emergencyinfo">Emergency Information</a>&#160;| <a href="http://www.niu.edu/employment">Employment</a> | <a href="http://www.niu.edu/visit/maps">Maps</a> | <a href="http://www.niu.edu/accessibility.shtml">Accessibility</a></p>
+</div>
+<div id="copyright">
+<p align="left">&#169; 2017 Board of Trustees of <a href="http://www.niu.edu">Northern Illinois University</a>.<br /> All rights reserved. <a href="http://doit.niu.edu/doit/Policies/privacy_policy.shtml">Web Site Privacy Policy</a></p>
+</div></div>
+</div>
+
+ <?php #include file="/its/includes/lastMod.html" ?>
+
+
+ 
+
+</body>
+</html>

@@ -31,7 +31,7 @@ body.rtl .style-switcher.open {
   margin: 10px 0;
 }
 .style-switcher h5 {
-  background-color: #333;
+  background-color: #595846;
   color: #fff;
   margin: 0;
   padding: 8px;
@@ -40,7 +40,7 @@ body.rtl .style-switcher.open {
   border-top: 1px solid #666;
 }
 .style-switcher h5 a {
-  background: #333;
+  background: #595846;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
   color: #E1E1E8;

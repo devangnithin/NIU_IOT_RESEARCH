@@ -202,6 +202,13 @@ class QueryClass {
         }
         return json_encode($Json);
     }
+    
+      public function selectQueryRunAssociation($Sql_) {
+        $Sql = $Sql_;
+        //echo $Sql;
+        $table = mysqli_query($this->dataBaseConnect->getConnection(), $Sql);
+        return $table->fetch_assoc();
+    }
 
     public function insertQueryRun($Sql) {
 

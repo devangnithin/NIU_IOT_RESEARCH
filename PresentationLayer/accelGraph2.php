@@ -1,73 +1,12 @@
 <!--<div id="accel_chart2" style="width: 800px; height: 500px; float: left"></div>-->
-<div id="accel_chart2" style="height: 500px;"></div>
+<div class="row">
+    <div class="col-lg-6">
+        <!--<div id="accel_chart2" style="height: 500px;"></div>-->
+        <iframe src="http://localhost:5601/app/kibana#/visualize/edit/16b18860-77bc-11e7-885b-f1bb4ab5f061?embed=true&_g=(refreshInterval%3A('%24%24hashKey'%3A'object%3A682'%2Cdisplay%3A'5%20seconds'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))" height="400px" width="100%"></iframe>
+    </div>
+    <div class="col-lg-6">
+        <div id="accel_chart_f2" style="height: 500px;"></div>
+    </div>
+</div>
 <?php
-$accResult2 = $acc->getAllAccelData(2);
-if (count($accResult2) > 0) {
-
-    $max2 = $accResult2[0]->id;
-    ;
-    ?>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart2);
-        var data2;
-        var chart2;
-        var options2 = {
-            title: '2nd Accelerometer Data',
-            curveType: 'function',
-            legend: {position: 'bottom'}
-        };
-
-        var max2 = <?php echo $max2; ?>;
-        function reload2() {
-            $.getJSON("fetchNewData.php?accel=2&graph_len_name=<?php echo $graphLength; ?>&id=" + max2, function (datah) {
-                var items = [];
-                $.each(datah, function (key, val) {
-                    var items2 = []
-                    $.each(val, function (key, val2) {
-                        if (key == "id") {
-                            if (parseInt(val2) > max2) {
-                                max2 = parseInt(val2);
-                            }
-                            //items2.push(val2);
-                        } else if (key == "post_time") {
-                            items2.push(val2);
-                        } else {
-                            items2.push(parseFloat(val2));
-                        }
-                    });
-                    items.push(items2);
-                });
-
-                data2.removeRows(0, datah.length);
-                data2.addRows(items);
-                chart2.draw(data2);
-
-            });
-        }
-        function drawChart2() {
-            data2 = google.visualization.arrayToDataTable([
-                ['ID', 'x-axis', 'y-axis', 'z-axis'],
-    <?php
-    foreach ($accResult2 as $accI) {
-        echo '[\'' . $accI->post_time . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
-        if ($accI->id > $max2) {
-            $max2 = $accI->id;
-        }
-    }
-    ?>
-            ]);
-            chart2 = new google.visualization.LineChart(document.getElementById('accel_chart2'));
-            chart2.draw(data2, options2);
-        }
-
-        setInterval(function () {
-            //reload2();
-        }, 5000);
-
-        max2 = <?php echo $max2; ?>
-    </script>
-    <?php
-} else {
-    echo "<h1>No Data</h1>";
-}
+echoFourierUI(2, $acc);

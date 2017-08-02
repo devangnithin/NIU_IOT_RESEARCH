@@ -1,81 +1,11 @@
-<div id="accel_chart1" style="height: 500px;"></div>
+<div class="row">
+    <div class="col-lg-6">
+        <iframe src="http://localhost:5601/app/kibana#/visualize/edit/48a4d950-7733-11e7-9714-319201388e7e?embed=true&_g=(refreshInterval%3A('%24%24hashKey'%3A'object%3A682'%2Cdisplay%3A'5%20seconds'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-15m%2Cmode%3Aquick%2Cto%3Anow))" height="400px" width="100%"></iframe>
+        <!--<iframe src="http://localhost:5601/app/kibana#/visualize/edit/48a4d950-7733-11e7-9714-319201388e7e?embed=true&_g=()" height="400px" width="100%"></iframe>-->
+    </div>
+    <div class="col-lg-6">
+        <div id="accel_chart_f1" style="height: 500px;" width="100%"></div>
+    </div>
+</div>
 <?php
-$accResult1 = $acc->getAllAccelData(1);
-if (count($accResult1) > 0) {
-
-    $max1 = $accResult1[0]->id;
-    ?>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(drawChart1);
-        var data1;
-        var chart1;
-        var options1 = {
-            title: '1st Accelerometer Data',
-            curveType: 'function',
-            legend: {position: 'bottom'},
-            vAxis: {
-                title: 'Accel Value',
-            },
-            hAxis: {
-                title: 'Time (UTC)',
-            }
-        };
-
-        var max1 = <?php echo $max1; ?>;
-        var isLoading = 0;
-        function reload1() {
-            if (isLoading === 0) {
-                isLoading = 1;
-            } else {
-                return;
-            }
-            $.getJSON("fetchNewData.php?accel=1&graph_len_name=<?php echo $graphLength; ?>&id=" + max1, function (datah) {
-                var items = [];
-                $.each(datah, function (key, val) {
-                    var items2 = []
-                    $.each(val, function (key, val2) {
-                        if (key == "id") {
-                            if (parseInt(val2) > max1) {
-                                max1 = parseInt(val2);
-                            }
-                        } else if (key == "post_time") {
-                            items2.push(val2);
-                        } else {
-                            items2.push(parseFloat(val2));
-                        }
-                    });
-                    items.push(items2);
-                });
-
-                data1.removeRows(0, datah.length);
-                data1.addRows(items);
-                chart1.draw(data1, options1);
-                isLoading = 0;
-
-            });
-        }
-        function drawChart1() {
-            data1 = google.visualization.arrayToDataTable([
-                ['ID', 'x-axis', 'y-axis', 'z-axis'],
-    <?php
-    foreach ($accResult1 as $accI) {
-        echo '[\'' . $accI->post_time . '\',  ' . $accI->x_val . ',' . $accI->y_val . ', ' . $accI->z_val . '],';
-        if ($accI->id > $max1) {
-            $max1 = $accI->id;
-        }
-    }
-    ?>
-            ]);
-            chart1 = new google.visualization.LineChart(document.getElementById('accel_chart1'));
-            chart1.draw(data1, options1);
-        }
-
-        setInterval(function () {
-            reload1();
-        }, 5000);
-
-        max1 = <?php echo $max1; ?>
-    </script>
-    <?php
-}
+echoFourierUI(1, $acc);

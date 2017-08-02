@@ -436,7 +436,7 @@ body:not(.sidebar-left-mini) #menu .nav-header {
 }
 .outer {
   padding: 10px;
-  background-color: #6e6e6e;
+  background-color: #595846; //#6e6e6e; //this
 }
 .outer:before,
 .outer:after {
@@ -2367,7 +2367,7 @@ div.uploader {
 }
 .bg-dark.dk,
 .bg-dark > .dk {
-  background-color: #3a3a3a !important;
+  background-color: #595846;/*#3a3a3a !important;*/ //this
 }
 .bg-dark.lt,
 .bg-dark > .lt {
