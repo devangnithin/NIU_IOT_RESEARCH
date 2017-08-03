@@ -30,19 +30,16 @@ function echoFourierUI($accelId, $acc) {
         <script type="text/javascript">
             google.charts.load('current', {'packages': ['corechart']});
             google.charts.setOnLoadCallback(drawChartF<?php echo $accelId; ?>);
-
             function drawChartF<?php echo $accelId; ?>() {
                 var dataF = google.visualization.arrayToDataTable([
 
                     ['', 'x Freq', 'y Freq', 'z Freq'],
-
         <?php
         for ($i = 3; $i < count($xfftResult) - 3; $i++) {
             echo '[\'\', ' . $xfftResult[$i]->getReal() . ', ' . $yfftResult[$i]->getReal() . ', ' . $zfftResult[$i]->getReal() . '],';
         }
         ?>
                 ]);
-
                 var optionsF<?php echo $accelId; ?> = {
                     title: 'Spectral Analysis',
                     curveType: 'function',
@@ -51,9 +48,7 @@ function echoFourierUI($accelId, $acc) {
                         title: 'Intensity',
                     }
                 };
-
                 var chart = new google.visualization.LineChart(document.getElementById('accel_chart_f<?php echo $accelId; ?>'));
-
                 chart.draw(dataF, optionsF<?php echo $accelId; ?>);
             }
         </script>
@@ -155,6 +150,7 @@ function echoFourierUI($accelId, $acc) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body class="  ">
@@ -215,65 +211,27 @@ function echoFourierUI($accelId, $acc) {
                         <img alt="NIU" border="0" height="120" src="/niu/assets/masterto/themes/standard_grey/images/NIU_logo.gif" width="70" /></a>
                 </h1>
                 <h2><img alt="Northern Illinois University" border="0" height="71px" src="/niu/assets/shared_content/images/department_headers/FFrenergy.jpg" width="500px" /></h2>
-                <!--<div id="globalNav">
-                <a id="NIU_Nav" name="NIU_Nav" ></a>
-                <a href="http://www.niu.edu/web.shtml">A-Z </a> | 
-                <a href="https://webcourses.niu.edu/webapps/portal/frameset.jsp">Blackboard</a> | 
-                <a href="http://www.niu.edu/eas/caldirect.aspx?cal=*&amp;view=week&amp;format=list">Calendar</a> | 
-                <a href="https://directory.niu.edu">Directory</a> | 
-                <a href="http://myniu.niu.edu/">MyNIU</a> | 
-            <a href="http://www.niutoday.info">NIU Today</a> | 
-            <a href="http://www.niu.edu">NIU Home</a><br />
-                </div>
-            <div id="search"><a id="NIU_Site_Search" name="NIU_Site_Search" ></a>
-            <form action="http://www.niu.edu/niusearch.asp" id="NIU_Search" name="SearchForm">
-                <input name="cx" type="hidden" value="015599932022858976637:nq6dbpwtmdi" />
-                <input name="cof" type="hidden" value="FORID:11" />
-                <input accesskey="S" id="SearchNIU" maxlength="255" name="q" onfocus="this.value = '';" size="14" title="Search NIU" value="Search NIU" />
-                                <input name="go" type="submit" value="GO!" /><br />
-                                <a href="http://www.niu.edu/niusearch.asp" title="Advanced Search">Advanced Search</a>
-                            </form>
-                        </div>-->
                 <hr style="margin-top:8.5%; box-shadow: 0 10px 10px -10px #8c8c8c inset; height: 10px"/>
             </div> 
 
             <div class="outer">
                 <div class="inner bg-light lter">
                     <br/>
-                    <!--<div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select Range
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button onclick="window.open('chart.php?graph_len_name=50', '_self')"class="btn btn-secondary dropdown-toggle">  50  </button>
-                            <button onclick="window.open('chart.php?graph_len_name=100', '_self')" class="btn btn-secondary dropdown-toggle"> 100 </button>
-                            <button onclick="window.open('chart.php?graph_len_name=250', '_self')" class="btn btn-secondary dropdown-toggle"> 250</button>
-                            <button onclick="window.open('chart.php?graph_len_name=500', '_self')" class="btn btn-secondary dropdown-toggle"> 500</button>
-                            <button onclick="window.open('chart.php?graph_len_name=1mn', '_self')" class="btn btn-secondary dropdown-toggle"> 1 min</button>
-                            <button onclick="window.open('chart.php?graph_len_name=5mn', '_self')" class="btn btn-secondary dropdown-toggle"> 5 min</button>
-                            <button onclick="window.open('chart.php?graph_len_name=30mn', '_self')"  class="btn btn-secondary dropdown-toggle"> 30 min </button>
-                            <button onclick="window.open('chart.php?graph_len_name=1hr', '_self')"  class="btn btn-secondary dropdown-toggle"> 1 hr</button>
-                            <button onclick="window.open('chart.php?graph_len_name=5hr', '_self')"  class="btn btn-secondary dropdown-toggle"> 5 hr</button>
-                        </div>
-                    </div>-->
+
+                    <h4>From Date: <input type="text" id="chartdatefrom"></h4>
 
                     <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph1.php"); ?>                    
                     <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph2.php"); ?>
 
                     <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph3.php"); ?>
-<?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph4.php"); ?>
+                    <?php require_once(dirname(__FILE__) . "/PresentationLayer/accelGraph4.php"); ?>
                 </div>
             </div>
         </div>
     </div>
     <!--jQuery -->
     <script src="assets/lib/jquery/jquery.js"></script>
-
-<!--        <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>-->
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--Bootstrap -->
     <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
     <!-- MetisMenu -->
@@ -289,11 +247,30 @@ function echoFourierUI($accelId, $acc) {
     <!-- Metis demo scripts -->
     <script src="assets/js/app.js"></script>
 
-<!--        <script>
-$(function () {
-    Metis.MetisChart();
-});
-        </script>-->
+
+    <script>
+        //2012-08-01T05%3A00%3A00.000Z   2012-08-01T05:00:00.000Z
+        var fromDate = '1';
+        var toDate = 'now/d';
+        $(function () {
+            $("#chartdatefrom").datepicker(
+                    {
+                        dateFormat: 'yy-mm-dd',
+                        onSelect: function (dateText) {
+                            var dFrom = Date.parse(dateText);
+                            var dNow = new Date();
+                            fromDate = Math.ceil((Math.abs(dNow - dFrom)) / (1000 * 3600 * 24));
+                            var param = '(refreshInterval%3A(\'%24%24hashKey\'%3A\'object%3A1626\'%2Cdisplay%3A\'5%20seconds\'%2Cpause%3A!f%2Csection%3A1%2Cvalue%3A5000)%2Ctime%3A(from%3Anow-' + fromDate + 'd%2Cmode%3Arelative%2Cto%3Anow))';
+                            $('#iframe_accel1').attr('src', $('#iframe_accel1').attr('src').split("g=")[0] + 'g=' + param);
+                            $('#iframe_accel2').attr('src', $('#iframe_accel2').attr('src').split("g=")[0] + 'g=' + param);
+                            $('#iframe_accel3').attr('src', $('#iframe_accel3').attr('src').split("g=")[0] + 'g=' + param);
+                            $('#iframe_accel4').attr('src', $('#iframe_accel4').attr('src').split("g=")[0] + 'g=' + param);
+                        }
+                    });
+
+        });
+    </script>
+
 </body>
 
 </html>

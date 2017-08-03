@@ -90,7 +90,7 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
                 x4: x4, y4: y4, z4: z4
             }
 
-            $.post("updateTresh.php", data)
+            $.post("PresentationLayer/updateTresh.php", data)
                     .done(function (data) {
                         //$("#test").html(data);
                         if (data.indexOf("successfully updated") !== -1)
@@ -137,6 +137,7 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
     <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body class="  ">
@@ -144,22 +145,23 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
         <div id="left">
             <hr style="margin-top:53.8%; box-shadow: 0 10px 10px -10px #8c8c8c inset; height: 10px"/>
             <div style="margin-top:10%">
+
                 <div class="media user-media bg-dark dker">
                     <div class="user-media-toggleHover">
                         <span class="fa fa-user"></span>
                     </div>
                     <div class="user-wrapper bg-dark">
-
                     </div>
                 </div>
                 <!-- #menu -->
+                <!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
                 <ul id="menu" class="bg-blue dker">
                     <li class="nav-header">Menu</li>
                     <li class="nav-divider"></li>
 
                     <li>
                         <a href="index.php">
-                            <i class="fa fa fa-bar-chart-o"></i>
+                            <i class="fa fa-home"></i>
                             <span class="link-title">
                                 Home
                             </span>
@@ -168,7 +170,7 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
 
                     <li>
                         <a href="chart.php">
-                            <i class="fa fa fa-bar-chart-o"></i>
+                            <i class="fa fa-bar-chart-o"></i>
                             <span class="link-title">
                                 Charts
                             </span>
@@ -176,9 +178,9 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
                     </li>
                     <li>
                         <a href="threshold.php">
-                            <i class="fa fa fa-bar-chart-o"></i>
+                            <i class="fa fa-bell"></i>
                             <span class="link-title">
-                                Threshold
+                                Alert
                             </span>
                         </a>
                     </li>
