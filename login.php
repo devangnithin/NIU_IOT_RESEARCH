@@ -5,11 +5,10 @@ if (isset($_SESSION['Login'])) {
     $Login = unserialize($_SESSION['Login']);
 } else
     $Login = new BL_LoginClass();
-
-if (!$Login->LoginCheck()) {
-    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=login.php">';
-} else {
 ?>
+
+
+
 <!doctype html>
 <html>
 
@@ -153,16 +152,6 @@ if (!$Login->LoginCheck()) {
                         </a>
                     </li>
                     <li class="nav-divider"></li>
-                    <li>
-                        <a href="logout.php">
-                            <i class="fa fa-sign-out" style="font-size:20px;"></i>
-                            <span class="link-title" style="font-size:20px;">
-                                &nbsp; Logout
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-divider"></li>
-
 
                 </ul>
             </div>
@@ -175,42 +164,46 @@ if (!$Login->LoginCheck()) {
                         <img alt="NIU" border="0" height="120" src="/niu/assets/masterto/themes/standard_grey/images/NIU_logo.gif" width="70" /></a>
                 </h1>
                 <h2><img alt="Northern Illinois University" border="0" height="71px" src="/niu/assets/shared_content/images/department_headers/FFrenergy.jpg" width="500px" /></h2>
-                <!--<div id="globalNav">
-                <a id="NIU_Nav" name="NIU_Nav" ></a>
-                <a href="http://www.niu.edu/web.shtml">A-Z </a> | 
-                <a href="https://webcourses.niu.edu/webapps/portal/frameset.jsp">Blackboard</a> | 
-                <a href="http://www.niu.edu/eas/caldirect.aspx?cal=*&amp;view=week&amp;format=list">Calendar</a> | 
-                <a href="https://directory.niu.edu">Directory</a> | 
-                <a href="http://myniu.niu.edu/">MyNIU</a> | 
-            <a href="http://www.niutoday.info">NIU Today</a> | 
-            <a href="http://www.niu.edu">NIU Home</a><br />
-                </div>
-            <div id="search"><a id="NIU_Site_Search" name="NIU_Site_Search" ></a>
-            <form action="http://www.niu.edu/niusearch.asp" id="NIU_Search" name="SearchForm">
-                <input name="cx" type="hidden" value="015599932022858976637:nq6dbpwtmdi" />
-                <input name="cof" type="hidden" value="FORID:11" />
-                <input accesskey="S" id="SearchNIU" maxlength="255" name="q" onfocus="this.value = '';" size="14" title="Search NIU" value="Search NIU" />
-                                <input name="go" type="submit" value="GO!" /><br />
-                                <a href="http://www.niu.edu/niusearch.asp" title="Advanced Search">Advanced Search</a>
-                            </form>
-                        </div>-->
                 <hr style="margin-top:8.5%; box-shadow: 0 10px 10px -10px #8c8c8c inset; height: 10px"/>
             </div> 
 
             <div class="outer">
 
                 <div class="inner bg-light lter" style="width:70%">
-                    <h2>Structural Health Monitoring of Bridges</h2>
-                    <h4>Bridges and structures are important part of land based communication.  
-                        They require periodic monitoring to ensure their reliable and safe operation.  
-                        Most of the cases any fault in the structure modifies its vibration behavior.  
-                        So vibration is an important phenomena to monitor to ensure usable condition of a bridge.  
-                        With this in mind, this project implements web based vibration monitoring of a model bridge.  
-                        The developed system will collect the vibration data from a bridge that can monitored over the web from remote locations.  
-                        Historical data will be saved on a remote server and can be downloaded for offline analysis to provide an understanding vibration behavior of the bridge.  
-                        User of the system can also set threshold level so that automatic alarm will be generated in case of higher level of bridge vibration. 
-                    </h4>
-                    <img src="assets/img/bridge_image.png" width="100%" />
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <form class="form-horizontal"  action='BusinessLogicLayer/BL_LoginValidate.php' method="POST">
+                                    <fieldset>
+                                        <div id="legend">
+                                            <legend class="">Login</legend>
+                                        </div>
+                                        <div class="control-group">
+                                            <!-- Username -->
+                                            <label class="control-label"  for="username">Username</label>
+                                            <div class="controls">
+                                                <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <!-- Password-->
+                                            <label class="control-label" for="password">Password</label>
+                                            <div class="controls">
+                                                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <!-- Button -->
+                                            <div class="controls">
+                                                <button class="btn btn-success">Login</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                 </div>
             </div>
         </div>
@@ -248,5 +241,18 @@ $(function () {
 </body>
 
 </html>
-  <?php
-}
+
+<html>
+    <head>
+        <title>
+            Your keymapped info
+        </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+
+    </body>
+</html>

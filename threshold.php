@@ -156,38 +156,50 @@ $curThresh = (new thresholdClass())->getAllThreshData()[0];
                 <!-- #menu -->
                 <!--<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>-->
                 <ul id="menu" class="bg-blue dker">
-                    <li class="nav-header">Menu</li>
+                    <li class="nav-header" style="font-size:30px;">Menu</li>
                     <li class="nav-divider"></li>
 
                     <li>
                         <a href="index.php">
-                            <i class="fa fa-home"></i>
-                            <span class="link-title">
-                                Home
+                            <i class="fa fa-home" style="font-size:20px;"></i>
+                            <span class="link-title" style="font-size:20px;">
+                                &nbsp; Home
                             </span>
                         </a>
                     </li>
 
                     <li>
                         <a href="chart.php">
-                            <i class="fa fa-bar-chart-o"></i>
-                            <span class="link-title">
-                                Charts
+                            <i class="fa fa-bar-chart-o" style="font-size:20px;"></i>
+                            <span class="link-title" style="font-size:20px;">
+                                &nbsp; Charts
                             </span>
                         </a>
                     </li>
                     <li>
                         <a href="threshold.php">
-                            <i class="fa fa-bell"></i>
-                            <span class="link-title">
-                                Alert
+                            <i class="fa fa-bell" style="font-size:20px;"></i>
+                            <span class="link-title" style="font-size:20px;">
+                                &nbsp; Alert
                             </span>
                         </a>
                     </li>
                     <li class="nav-divider"></li>
-
-
-                </ul>
+                    <?php
+                        if (!$Login->LoginCheck()) {
+                            ?>
+                            <li>
+                                <a href="logout.php">
+                                    <i class="fa fa-sign-out" style="font-size:20px;"></i>
+                                    <span class="link-title" style="font-size:20px;">
+                                        &nbsp; Logout
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-divider"></li>
+                            <?php
+                        }
+                        ?>
             </div>
             <!-- /#menu -->
         </div>
