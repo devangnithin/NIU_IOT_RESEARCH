@@ -1,15 +1,22 @@
 <?php
 
-//var_dump($_POST);
-require_once(dirname(__FILE__) . "/BusinessLogicLayer/thresholdClass.php");
-$thresh = new thresholdClass();
+$doc = file_get_contents('php://input');
 
-$accelArray = array();
-foreach ($_POST as $key => $value) {
-    $accelArray[$key] = $value;
-}
-if($thresh ->insert($accelArray)) {
+
+$ch = curl_init("http://localhost:8085/threshold");
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST"); 
+curl_setopt($ch, CURLOPT_POSTFIELDS, $doc); 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(                                                                          
+    'Content-Type: application/json',                                                                                
+    'Content-Length: ' . strlen($doc))                                                                       
+);                                                                                                                   
+                                                                                                                     
+$result = curl_exec($ch);
+var_dump($doc);
+var_dump($result);
+/*if($thresh ->insert($accelArray)) {
     echo 'successfully updated';
 } else {
 echo 'Failed';    
-}
+}*/
